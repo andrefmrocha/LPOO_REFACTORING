@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Tree {
-    public final Location location;
+    private final Location location;
     public Date plantedAt;
     private List<Date> appraisalDates;
 
@@ -27,6 +27,8 @@ public class Tree {
     void addAppraisal(Date appraisalDate) {
         this.appraisalDates.add(appraisalDate);
     }
+
+    Location getLocation(){ return this.location; }
 
     public List<Date> getAppraisals(){
         return this.appraisalDates;

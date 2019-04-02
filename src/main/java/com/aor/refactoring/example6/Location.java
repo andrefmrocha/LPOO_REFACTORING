@@ -16,6 +16,18 @@ public class Location {
         this.locationName = locationName;
     }
 
+    public String getLocationLatitude() {
+        return locationLatitude;
+    }
+
+    public String getLocationLongitude() {
+        return locationLongitude;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
     String location(){
         return " in location " + this.locationLatitude + "," + this.locationLongitude + " (" + this.locationName + ")";
     }
