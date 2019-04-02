@@ -23,6 +23,6 @@ public class Circle implements Shape{
 
     @Override
     public void draw(GraphicFramework graphics) {
-
+        graphics.drawCircle(x, y, radius);
     }
 }
