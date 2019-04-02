@@ -32,7 +32,7 @@ public class Order {
         StringBuffer printBuffer = new StringBuffer();
 
         for (OrderLine line : lines)
-            printBuffer.append(line.getProduct().getName() + "(x" + line.getQuantity() + "): " + (line.getProduct().getPrice() * line.getQuantity()) + "\n");
+            printBuffer.append(line.getInformation());
 
         double total = getTotal();
 
@@ -40,4 +40,6 @@ public class Order {
 
         return printBuffer.toString();
     }
+
+
 }
