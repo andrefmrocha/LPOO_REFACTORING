@@ -10,15 +10,14 @@ public class Order {
         lines = new ArrayList<>();
     }
 
-    public void add(Product product, int quantity) {
-        lines.add(new OrderLine(product, quantity));
+    public void add(OrderLine orderLine) {
+        lines.add(orderLine);
     }
 
     public boolean isElegibleForFreeDelivery() {
         double total = getTotal();
 
-        if (total > 100) return true;
-        else return false;
+        return total > 100;
     }
 
     private double getTotal() {
