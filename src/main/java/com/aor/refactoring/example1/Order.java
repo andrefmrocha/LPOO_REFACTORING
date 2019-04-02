@@ -15,13 +15,18 @@ public class Order {
     }
 
     public boolean isElegibleForFreeDelivery() {
+        double total = getTotal();
+
+        if (total > 100) return true;
+        else return false;
+    }
+
+    private double getTotal() {
         double total = 0;
 
         for (OrderLine line : lines)
             total += line.product.getPrice() * line.quantity;
-
-        if (total > 100) return true;
-        else return false;
+        return total;
     }
 
     public String printOrder() {
@@ -30,10 +35,7 @@ public class Order {
         for (OrderLine line : lines)
             printBuffer.append(line.product.getName() + "(x" + line.quantity + "): " + (line.product.getPrice() * line.quantity) + "\n");
 
-        double total = 0;
-
-        for (OrderLine line : lines)
-            total += line.product.getPrice() * line.quantity;
+        double total = getTotal();
 
         printBuffer.append("Total: " + total);
 
