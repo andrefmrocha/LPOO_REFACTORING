@@ -8,14 +8,7 @@ public class SimpleOrder {
         this.price = price;
     }
 
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
-    }
-
     public double getTotal() {
-        if (discount == null)
-            return price;
-        else
-            return discount.applyDiscount(price);
+        return price;
     }
 }
