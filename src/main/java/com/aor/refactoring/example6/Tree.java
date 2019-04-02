@@ -36,18 +36,16 @@ public class Tree {
 
     public boolean isNextAppraisalOverdue(){
         Date today = new Date();
-        Date latestAppraisalDate = today;
+        Date latestAppraisalDate = new Date();
 
-        if (this.appraisalDates.size() > 0) {
-            latestAppraisalDate = this.appraisalDates.get(0);
-        }
-        for(Date appraisalDate : this.appraisalDates) {
-            if (latestAppraisalDate.before(appraisalDate)) {
-                latestAppraisalDate = appraisalDate;
-            }
-        }
+        latestAppraisalDate = getLatestAppraisalDate(latestAppraisalDate);
 
-        // Calculate next appraisal date
+        Date nextAppraisalDate = nextAppraisalDate(latestAppraisalDate);
+
+        return nextAppraisalDate.before(today);
+    }
+
+    private Date nextAppraisalDate(Date latestAppraisalDate) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(latestAppraisalDate);
         calendar.add(Calendar.MONTH, 3);
@@ -57,8 +55,18 @@ public class Tree {
         else if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
             calendar.add(Calendar.DAY_OF_MONTH, 2);
 
-        Date nextAppraisalDate = calendar.getTime();
-        // Appraisal is only overdue if its date is in the past
-        return nextAppraisalDate.before(today);
+        return calendar.getTime();
+    }
+
+    private Date getLatestAppraisalDate(Date latestAppraisalDate) {
+        if (this.appraisalDates.size() > 0) {
+            latestAppraisalDate = this.appraisalDates.get(0);
+        }
+        for(Date appraisalDate : this.appraisalDates) {
+            if (latestAppraisalDate.before(appraisalDate)) {
+                latestAppraisalDate = appraisalDate;
+            }
+        }
+        return latestAppraisalDate;
     }
 }
