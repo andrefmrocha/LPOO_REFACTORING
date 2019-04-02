@@ -2,7 +2,7 @@ package com.aor.refactoring.example4;
 
 import java.util.Objects;
 
-public class Worker {
+public class Worker implements Associate{
     private final String name;
     private final String phone;
     private final String username;

@@ -1,9 +1,12 @@
 package com.aor.refactoring.example4;
 
-public class Client extends Worker {
+public class Client implements Associate {
+    private final String name;
+    private final String phone;
 
     public Client(String name, String phone) {
-        super(name, phone, null, null);
+        this.name = name;
+        this.phone = phone;
     }
 
     @Override
